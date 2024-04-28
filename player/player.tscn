@@ -72,7 +72,6 @@ sprite_frames = SubResource("SpriteFrames_tabkr")
 animation = &"Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_cqo44")
 
 [node name="Camera2D" type="Camera2D" parent="."]
