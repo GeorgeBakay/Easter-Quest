@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://cc2lrcamcti1s"]
+
+[ext_resource type="Script" path="res://NPC.gd" id="1_pdb2f"]
+[ext_resource type="Texture2D" uid="uid://4r6vcs7lxnf7" path="res://assets/NPC/Igor/Igor_Idle-Sheet.png" id="2_0gpyn"]
+[ext_resource type="Texture2D" uid="uid://vdri3c6udbr3" path="res://assets/NPC/Igor/Igor_Run-Sheet.png" id="3_ihq6b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcyeh"]
+atlas = ExtResource("2_0gpyn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht1rt"]
+atlas = ExtResource("2_0gpyn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6yye"]
+atlas = ExtResource("2_0gpyn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_866pu"]
+atlas = ExtResource("2_0gpyn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n60wf"]
+atlas = ExtResource("2_0gpyn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7y1k"]
+atlas = ExtResource("2_0gpyn")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2rr2"]
+atlas = ExtResource("3_ihq6b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12ch4"]
+atlas = ExtResource("3_ihq6b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsgtt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcyeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ht1rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6yye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_866pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n60wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7y1k")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2rr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12ch4")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ldjuq"]
+radius = 3.0104
+
+[node name="NPC" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_pdb2f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.398438, 0.398438)
+sprite_frames = SubResource("SpriteFrames_bsgtt")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ldjuq")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
