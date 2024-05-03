@@ -89,19 +89,20 @@ animations = [{
 }]
 
 [node name="Door1" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_0eveh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("1_pr12k")
+offset = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_4prqs")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2DOpenArea" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_sxdey")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
