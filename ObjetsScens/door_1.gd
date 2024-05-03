@@ -36,7 +36,7 @@ func _on_area_2d_body_entered(body):
 			is_in_area = true
 		else:
 			this_sprite.visible = false
-			this_collision.disabled = true
+			this_collision.set_deferred("disabled",true)
 			
 			is_open = true
 	pass # Replace with function body.
@@ -50,6 +50,6 @@ func _on_area_2d_body_exited(body):
 			is_in_area = false
 		else:
 			this_sprite.visible = true
-			this_collision.disabled = false
+			this_collision.set_deferred("disabled",false)
 			is_open = false
 	pass # Replace with function body.

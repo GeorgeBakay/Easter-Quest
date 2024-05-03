@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cc2lrcamcti1s"]
+[gd_scene load_steps=15 format=3 uid="uid://cc2lrcamcti1s"]
 
 [ext_resource type="Script" path="res://NPC.gd" id="1_pdb2f"]
 [ext_resource type="Texture2D" uid="uid://4r6vcs7lxnf7" path="res://assets/NPC/Igor/Igor_Idle-Sheet.png" id="2_0gpyn"]
@@ -76,6 +76,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ldjuq"]
 radius = 3.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kox0v"]
+polygon = PackedVector2Array(-2, -1, -2, 1, 2, 1, 2, -1)
+
 [node name="NPC" type="CharacterBody2D"]
 y_sort_enabled = true
 motion_mode = 1
@@ -92,5 +95,8 @@ animation = &"Idle"
 shape = SubResource("CircleShape2D_ldjuq")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_kox0v")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
