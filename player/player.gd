@@ -14,11 +14,11 @@ func _physics_process(delta):
 	var Xdirection = Input.get_axis("ui_left", "ui_right")
 	var Ydirection = Input.get_axis("ui_up","ui_down")
 	if Xdirection:
-		velocity.x = Xdirection * SPEED
+		velocity.x = Xdirection 
 	else:
 		velocity.x = move_toward(velocity.x, 0, 100.0)
 	if Ydirection:
-		velocity.y = Ydirection * SPEED
+		velocity.y = Ydirection 
 	else:
 		velocity.y = move_toward(velocity.y, 0, 100.0)
 	if Xdirection or Ydirection:
@@ -29,5 +29,6 @@ func _physics_process(delta):
 		anim.flip_h=true
 	elif Xdirection == 1:
 		anim.flip_h = false
-	
+	if velocity.length()> 0:
+		velocity = velocity.normalized() * SPEED
 	move_and_slide()
